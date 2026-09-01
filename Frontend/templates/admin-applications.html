@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Applications - JobPortal</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+
+        <div class="logo">JobPortal</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/jobs">Jobs</a>
+            <a href="/admin/applications">Applications</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Applications Section -->
+    <section class="jobs-page">
+
+        <h1>Job Applications</h1>
+
+        <p class="jobs-subtitle">
+            View all submitted job applications.
+        </p>
+
+
+        {% if applications %}
+
+        <div class="job-list">
+
+            {% for application in applications %}
+
+            <div class="job-item">
+
+                <div>
+
+                    <h2>{{ application.full_name }}</h2>
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ application.email }}
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        {{ application.phone }}
+                    </p>
+
+                    <p>
+                        <strong>Applied Job:</strong>
+                        {{ application.applied_job }}
+                    </p>
+
+                    <p>
+                        <strong>Resume:</strong>
+                        {{ application.resume }}
+                    </p>
+
+                    <p>
+                        <strong>Cover Message:</strong>
+                        {{ application.cover_message }}
+                    </p>
+
+                    <p>
+                        <strong>Applied On:</strong>
+                        {{ application.created_at }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <p>No applications found.</p>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 JobPortal. All Rights Reserved.</p>
+
+    </footer>
+
+</body>
+
+</html>

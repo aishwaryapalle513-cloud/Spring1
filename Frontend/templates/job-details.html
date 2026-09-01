@@ -1,0 +1,496 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ job.title }} - JobPortal</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: white;
+            height: 70px;
+            padding: 0 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .register-btn {
+            background: #2563eb;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        /* HERO */
+
+        .job-hero {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 55px 20px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .job-hero h1 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .company-name {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .hero-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hero-info span {
+            background: rgba(255,255,255,0.15);
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+        }
+
+        /* CARDS */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: #111827;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: #e8f0ff;
+            color: #2563eb;
+            padding: 9px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* RESPONSIBILITIES */
+
+        .responsibilities {
+            white-space: pre-line;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* SIDE CARD */
+
+        .apply-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .apply-card h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .apply-btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 14px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .apply-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 13px;
+            border-radius: 7px;
+        }
+
+        .back-btn:hover {
+            background: #f3f4f6;
+        }
+
+        /* JOB INFO */
+
+        .job-info {
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #6b7280;
+        }
+
+        .info-value {
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .job-hero h1 {
+                font-size: 30px;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .apply-card {
+                position: static;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            JobPortal
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/jobs">Jobs</a>
+
+            <a href="/login">Login</a>
+
+            <a href="/register" class="register-btn">
+                Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- JOB HERO -->
+
+    <section class="job-hero">
+
+        <div class="hero-content">
+
+            <h1>{{ job.title }}</h1>
+
+            <div class="company-name">
+                {{ job.company }}
+            </div>
+
+            <div class="hero-info">
+
+                <span>📍 {{ job.location }}</span>
+
+                <span>💼 {{ job.experience }}</span>
+
+                <span>🕒 {{ job.job_type }}</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="container">
+
+        <div class="content">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="card">
+
+                    <h2>Job Description</h2>
+
+                    <p>
+                        {{ job.description }}
+                    </p>
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                <div class="card">
+
+                    <h2>Required Skills</h2>
+
+                    <div class="skills">
+
+                        {% for skill in job.skills.split(',') %}
+
+                            <span class="skill">
+                                {{ skill.strip() }}
+                            </span>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESPONSIBILITIES -->
+
+                <div class="card">
+
+                    <h2>Responsibilities</h2>
+
+                    <p class="responsibilities">
+                        {{ job.responsibilities }}
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div>
+
+                <div class="apply-card">
+
+                    <h3>Job Overview</h3>
+
+                    <div class="job-info">
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Company
+                            </span>
+
+                            <span class="info-value">
+                                {{ job.company }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Location
+                            </span>
+
+                            <span class="info-value">
+                                {{ job.location }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Experience
+                            </span>
+
+                            <span class="info-value">
+                                {{ job.experience }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Job Type
+                            </span>
+
+                            <span class="info-value">
+                                {{ job.job_type }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="/apply.html"
+                       class="apply-btn">
+
+                        Apply Now
+
+                    </a>
+
+
+                    <a href="/jobs"
+                       class="back-btn">
+
+                        ← Back to Jobs
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 JobPortal. All Rights Reserved.
+
+    </footer>
+
+
+</body>
+
+</html>
+```

@@ -1,0 +1,379 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - JobPortal</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 70px;
+            background: white;
+            padding: 0 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .logout {
+            color: #dc2626 !important;
+        }
+
+        /* ================= HERO ================= */
+
+        .dashboard-hero {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 55px 20px;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .hero-content h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero-content p {
+            font-size: 17px;
+            opacity: 0.95;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            background: #e8f0ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= QUICK INFO ================= */
+
+        .quick-section {
+            margin-top: 45px;
+        }
+
+        .quick-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .quick-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .quick-box p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .dashboard-hero {
+                padding: 40px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 30px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            JobPortal
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/jobs">
+                Jobs
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/login" class="logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="dashboard-hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Job Seeker Dashboard
+            </h1>
+
+            <p>
+                Welcome to JobPortal! Find your next career opportunity.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Dashboard
+        </h2>
+
+
+        <div class="cards">
+
+
+            <!-- AVAILABLE JOBS -->
+
+            <div class="card">
+
+                <div class="icon">
+                    💼
+                </div>
+
+                <h2>
+                    Available Jobs
+                </h2>
+
+                <p>
+                    Find jobs according to your skills,
+                    experience and location.
+                </p>
+
+                <a href="/jobs" class="btn">
+                    View Jobs
+                </a>
+
+            </div>
+
+
+            <!-- MY APPLICATIONS -->
+
+            <div class="card">
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <h2>
+                    My Applications
+                </h2>
+
+                <p>
+                    Track and view all the job applications
+                    you have submitted.
+                </p>
+
+                <a href="/my-applications" class="btn">
+                    View Applications
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- QUICK INFO -->
+
+        <div class="quick-section">
+
+            <div class="quick-box">
+
+                <h2>
+                    🚀 Start Your Career
+                </h2>
+
+                <p>
+                    Explore available jobs, check job details
+                    and apply for positions that match your skills.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 JobPortal. All Rights Reserved.
+
+    </footer>
+
+
+</body>
+
+</html>
+```

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Portal</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">JobPortal</div>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/jobs">Jobs</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+</nav>
+    </header>
+
+    
+<section class="hero">
+
+    <h1>Find Your Dream Job</h1>
+
+    <p>
+        Search and apply for the latest job opportunities
+    </p>
+
+    <div class="search-box">
+
+        <form action="/jobs" method="GET">
+
+            <input
+                type="text"
+                name="keyword"
+                placeholder="Job title, skills or company"
+            >
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Location e.g. Mumbai"
+            >
+
+            <button type="submit">
+                Search Jobs
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+    <!-- Jobs Section -->
+    <section class="jobs">
+
+        <h2>Latest Jobs</h2>
+
+        <div class="job-container">
+
+            <div class="job-card">
+                <h3>Python Developer</h3>
+                <p>ABC Technologies</p>
+                <p>Mumbai</p>
+                <a href="/job-details/1">View Details</a>
+            </div>
+
+
+            <div class="job-card">
+                <h3>Web Developer</h3>
+                <p>XYZ Solutions</p>
+                <p>Pune</p>
+                <a href="/job-details/2">View Details</a>
+            </div>
+
+
+            <div class="job-card">
+                <h3>Software Developer</h3>
+                <p>Tech Solutions</p>
+                <p>Delhi</p>
+                <a href="/job-details/3">View Details</a>
+            </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 JobPortal. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

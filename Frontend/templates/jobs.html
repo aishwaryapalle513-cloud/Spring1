@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jobs - JobPortal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .register-btn {
+            background: #2563eb;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        /* HEADER */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            padding: 55px 8%;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        /* SEARCH */
+        .search-box {
+            width: 84%;
+            max-width: 1000px;
+            margin: -25px auto 40px;
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            display: flex;
+            gap: 12px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-box button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0 28px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #1d4ed8;
+        }
+
+        /* MAIN */
+        .container {
+            width: 84%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            margin-bottom: 22px;
+        }
+
+        .section-title h2 {
+            font-size: 26px;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 6px;
+        }
+
+        /* JOB CARD */
+        .job-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+        }
+
+        .job-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .job-title {
+            font-size: 23px;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .job-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .job-type {
+            background: #e8f0ff;
+            color: #2563eb;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-top: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .skill {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .job-bottom {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .apply-btn {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 11px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .apply-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .responsibilities {
+            margin-top: 18px;
+        }
+
+        .responsibilities h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .responsibilities ul {
+            padding-left: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 60px;
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .search-box {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .search-box button {
+                padding: 13px;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .job-top {
+                flex-direction: column;
+            }
+
+            .job-bottom {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            JobPortal
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/jobs">Jobs</a>
+            <a href="/login">Login</a>
+            <a href="/register" class="register-btn">Register</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <h1>Find Your Dream Job</h1>
+
+        <p>Search and apply for the latest job opportunities</p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Search job title, skills or company..."
+        >
+
+        <input
+            type="text"
+            placeholder="Location"
+        >
+
+        <button>Search Jobs</button>
+
+    </div>
+
+
+    <!-- JOBS -->
+    <main class="container">
+
+        <div class="section-title">
+            <h2>Latest Job Opportunities</h2>
+            <p>Explore the latest openings and start your career.</p>
+        </div>
+
+
+        <!-- JOB 1 -->
+        <div class="job-card">
+
+            <div class="job-top">
+
+                <div>
+                    <h2 class="job-title">Python Developer</h2>
+
+                    <div class="company">
+                        ABC Technologies
+                    </div>
+
+                    <div class="job-info">
+                        <span>📍 Mumbai</span>
+                        <span>💼 0-2 Years</span>
+                    </div>
+                </div>
+
+                <span class="job-type">
+                    Full Time
+                </span>
+
+            </div>
+
+            <p class="description">
+                We are looking for a Python Developer to join our
+                development team. The candidate will work on web
+                applications and backend development.
+            </p>
+
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">MySQL</span>
+            </div>
+
+            <div class="responsibilities">
+
+                <h3>Responsibilities</h3>
+
+                <ul>
+                    <li>Develop and maintain web applications.</li>
+                    <li>Work with databases.</li>
+                    <li>Write clean and maintainable code.</li>
+                    <li>Fix bugs and improve application performance.</li>
+                </ul>
+
+            </div>
+
+            <div class="job-bottom">
+
+                <span>Posted recently</span>
+
+                <a href="/apply.html" class="apply-btn">
+                    Apply Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOB 2 -->
+        <div class="job-card">
+
+            <div class="job-top">
+
+                <div>
+                    <h2 class="job-title">Web Developer</h2>
+
+                    <div class="company">
+                        XYZ Solutions
+                    </div>
+
+                    <div class="job-info">
+                        <span>📍 Pune</span>
+                        <span>💼 0-1 Years</span>
+                    </div>
+                </div>
+
+                <span class="job-type">
+                    Full Time
+                </span>
+
+            </div>
+
+            <p class="description">
+                We are looking for a Web Developer to create and
+                maintain websites and web applications.
+            </p>
+
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">MySQL</span>
+            </div>
+
+            <div class="responsibilities">
+
+                <h3>Responsibilities</h3>
+
+                <ul>
+                    <li>Develop and maintain websites and web applications.</li>
+                    <li>Create responsive and user-friendly web pages.</li>
+                    <li>Work with HTML, CSS and JavaScript.</li>
+                    <li>Fix website bugs and improve performance.</li>
+                    <li>Work with databases and APIs.</li>
+                </ul>
+
+            </div>
+
+            <div class="job-bottom">
+
+                <span>Posted recently</span>
+
+                <a href="/apply.html" class="apply-btn">
+                    Apply Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOB 3 -->
+        <div class="job-card">
+
+            <div class="job-top">
+
+                <div>
+                    <h2 class="job-title">Software Developer</h2>
+
+                    <div class="company">
+                        Tech Solutions
+                    </div>
+
+                    <div class="job-info">
+                        <span>📍 Delhi</span>
+                        <span>💼 1-3 Years</span>
+                    </div>
+                </div>
+
+                <span class="job-type">
+                    Full Time
+                </span>
+
+            </div>
+
+            <p class="description">
+                We are looking for a Software Developer to develop,
+                test and maintain software applications.
+            </p>
+
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">Java</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Git</span>
+            </div>
+
+            <div class="responsibilities">
+
+                <h3>Responsibilities</h3>
+
+                <ul>
+                    <li>Develop and maintain software applications.</li>
+                    <li>Write clean and efficient code.</li>
+                    <li>Test and debug software applications.</li>
+                    <li>Fix bugs and improve application performance.</li>
+                    <li>Work with databases and development tools.</li>
+                </ul>
+
+            </div>
+
+            <div class="job-bottom">
+
+                <span>Posted recently</span>
+
+                <a href="/apply.html" class="apply-btn">
+                    Apply Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 JobPortal. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
+```
